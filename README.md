@@ -4,17 +4,44 @@
 
 **KI-gestützte Prozessoptimierung für intelligente Auftragsverarbeitung**
 
-[![Status](https://img.shields.io/badge/Status-In%20Entwicklung-F59E0B?style=for-the-badge)](https://github.com/intelligent-process-lab/smart-order-processing)
-[![Phase](https://img.shields.io/badge/Phase-Vorbereitung-6366F1?style=for-the-badge)](https://github.com/intelligent-process-lab/smart-order-processing)
-[![Laufzeit](https://img.shields.io/badge/Laufzeit-10%20Wochen-22C55E?style=for-the-badge)](https://github.com/intelligent-process-lab/smart-order-processing)
+[![Status](https://img.shields.io/badge/Status-MVP%20Live-22C55E?style=for-the-badge)](https://github.com/intelligent-process-lab/smart-order-processing)
+[![Backend](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi)](https://github.com/intelligent-process-lab/smart-order-processing)
+[![Frontend](https://img.shields.io/badge/Frontend-React%20%2B%20TypeScript-3178C6?style=for-the-badge&logo=react)](https://github.com/intelligent-process-lab/smart-order-processing)
+[![KI](https://img.shields.io/badge/KI-Claude%20Sonnet-D97706?style=for-the-badge)](https://github.com/intelligent-process-lab/smart-order-processing)
 [![Lizenz](https://img.shields.io/badge/Lizenz-Open%20Source-0EA5E9?style=for-the-badge)](https://github.com/intelligent-process-lab/smart-order-processing)
 
 <br/>
 
-> Ein Open-Source-Prototyp zur KI-gestützten Prozessoptimierung –  
+> Ein Open-Source-Prototyp zur KI-gestützten Auftragsverarbeitung –  
 > entwickelt als professionelles Portfolio-Projekt mit synthetischen Fallstudien-Daten.
 
 </div>
+
+---
+
+## Was macht dieses System?
+
+Ein Nutzer gibt einen unstrukturierten Auftragstext ein — der KI-Agent analysiert ihn automatisch, extrahiert alle relevanten Daten und validiert den Auftrag in Echtzeit.
+
+```
+Eingabe (Freitext):
+  "Kunde: Mustermann GmbH, 3x Laptop Dell XPS, 5x Maus Logitech,
+   Gesamtpreis: 4.750 EUR, Lieferung bis Ende November"
+
+                        │
+                        ▼
+              🤖 Claude KI-Agent
+
+                        │
+                        ▼
+
+Ausgabe (strukturiert):
+  ✅ Kunde:       Mustermann GmbH
+  ✅ Artikel:     Laptop Dell XPS, Maus Logitech
+  ✅ Menge:       3x, 5x
+  ✅ Preis:       4.750 EUR
+  ⚠️  Datum:      nicht angegeben
+```
 
 ---
 
@@ -28,18 +55,18 @@
 │   ┌─────────────┐    ┌──────────────────┐    ┌────────────────┐  │
 │   │   Eingang   │    │   KI-Verarbeitung │    │    Ausgang     │  │
 │   │             │    │                   │    │                │  │
-│   │ Dokumente   │───▶│  Extraktion       │───▶│ Validierter    │  │
-│   │ Bestellungen│    │  Klassifikation   │    │ Auftrag        │  │
-│   │ PDFs / CSV  │    │  Entscheidung     │    │ Bericht        │  │
+│   │ Freitext    │───▶│  Claude Sonnet    │───▶│ Strukturierter │  │
+│   │ Datei-Upload│    │  Extraktion       │    │ Auftrag        │  │
+│   │             │    │  Validierung      │    │ + Bericht      │  │
 │   └─────────────┘    └──────────────────┘    └────────────────┘  │
 │                               │                                    │
 │                    ┌──────────┴──────────┐                        │
 │                    │                     │                         │
-│             ┌──────▼──────┐    ┌────────▼──────┐                 │
-│             │  Backend    │    │   Dashboard   │                  │
-│             │  FastAPI    │    │   React / TS  │                  │
-│             │  REST API   │    │   Tailwind    │                  │
-│             └─────────────┘    └───────────────┘                  │
+│          ┌─────────▼──────┐    ┌────────▼──────┐                 │
+│          │    Backend      │    │   Dashboard   │                  │
+│          │  FastAPI :8000  │◀──▶│  React :5173  │                 │
+│          │  REST API       │    │  Tailwind CSS │                  │
+│          └────────────────┘    └───────────────┘                  │
 │                                                                    │
 └──────────────────────────────────────────────────────────────────┘
 ```
@@ -48,15 +75,16 @@
 
 ## Features
 
-| Feature | Beschreibung | Status |
+| Feature | Technologie | Status |
 |---|---|---|
-| 📄 Dokumentenverarbeitung | Text/CSV-Import, automatisches Parsing | ✅ Implementiert |
-| 🤖 KI-Extraktion | Auftragsdaten per Claude extrahieren | ✅ Implementiert |
-| ✅ Datenvalidierung | Regelbasierte Plausibilitätsprüfung | ✅ Implementiert |
-| 🔌 REST API | FastAPI Backend mit Swagger-Doku | ✅ Implementiert |
-| 🖥️ Dashboard | React Frontend mit Live-Statistiken | ✅ Implementiert |
-| 🐳 Docker | Ein-Befehl-Start mit docker-compose | ✅ Implementiert |
-| 📊 BPMN-Analyse | Prozessmodelle und Wirtschaftlichkeit | ⏳ Geplant |
+| 🤖 KI-Extraktion | Claude Sonnet (Anthropic) | ✅ Live |
+| ✅ Datenvalidierung | Regelbasierte Prüfung | ✅ Live |
+| 🔌 REST API | FastAPI + Pydantic | ✅ Live |
+| 🖥️ Dashboard | React + TypeScript + Tailwind | ✅ Live |
+| 📄 Datei-Upload | FastAPI UploadFile | ✅ Live |
+| 🐳 Docker | docker-compose | ✅ Bereit |
+| 📊 BPMN-Analyse | Prozessmodelle | ⏳ Geplant |
+| 🗄️ Datenbank | PostgreSQL Persistenz | ⏳ Geplant |
 
 ---
 
@@ -64,31 +92,55 @@
 
 | Bereich | Technologie |
 |---|---|
-| **Backend** | Python 3.11 · FastAPI · Pydantic |
+| **Backend** | Python 3.11 · FastAPI · Pydantic · Uvicorn |
 | **KI / LLM** | Anthropic Claude (claude-sonnet-4-6) |
-| **Frontend** | React · TypeScript · Vite · Tailwind CSS |
+| **Frontend** | React 19 · TypeScript · Vite · Tailwind CSS v4 |
 | **DevOps** | Docker · docker-compose · GitHub Actions |
 
 ---
 
 ## Quickstart
 
+### Option A — Docker (empfohlen)
+
 ```bash
-# 1. Repo klonen
 git clone https://github.com/intelligent-process-lab/smart-order-processing.git
 cd smart-order-processing
-
-# 2. API-Key setzen
 cp .env.example .env
 # ANTHROPIC_API_KEY in .env eintragen
-
-# 3. Starten
 docker-compose up --build
 ```
 
+### Option B — Lokal
+
+```bash
+# Backend
+cd src/backend
+python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+export ANTHROPIC_API_KEY=sk-ant-...
+uvicorn main:app --reload --port 8000
+
+# Frontend (neues Terminal)
+cd src/frontend
+npm install && npm run dev
+```
+
 **Öffne dann:**
-- 🖥️ Dashboard: http://localhost:5173
-- 📡 API-Docs: http://localhost:8000/docs
+- 🖥️ **Dashboard:** http://localhost:5173
+- 📡 **API-Docs:** http://localhost:8000/docs
+
+---
+
+## API Endpoints
+
+| Method | Endpoint | Beschreibung |
+|---|---|---|
+| `GET` | `/health` | System-Status |
+| `POST` | `/auftrag/text` | Auftrag aus Freitext verarbeiten |
+| `POST` | `/auftrag/datei` | Auftrag aus Datei-Upload verarbeiten |
+| `GET` | `/auftraege` | Alle verarbeiteten Aufträge abrufen |
+| `DELETE` | `/auftraege` | Verlauf leeren |
 
 ---
 
@@ -98,21 +150,28 @@ docker-compose up --build
 smart-order-processing/
 │
 ├── src/
-│   ├── backend/          ← FastAPI, KI-Extraktion, Validierung
-│   │   ├── main.py
-│   │   ├── extraktor.py  ← Claude-Agent
-│   │   ├── models.py
+│   ├── backend/
+│   │   ├── main.py          ← FastAPI App + Endpoints
+│   │   ├── extraktor.py     ← Claude KI-Agent
+│   │   ├── models.py        ← Pydantic Schemas
+│   │   ├── requirements.txt
 │   │   └── Dockerfile
-│   └── frontend/         ← React Dashboard
+│   │
+│   └── frontend/
 │       ├── src/
 │       │   ├── App.tsx
+│       │   ├── types.ts
 │       │   └── components/
+│       │       ├── StatsBar.tsx      ← Live-Statistiken
+│       │       ├── AuftragForm.tsx   ← Eingabe + Beispiel
+│       │       └── ErgebnisKarte.tsx ← Ergebnis-Anzeige
 │       └── Dockerfile
 │
-├── data/                 ← Synthetische Testdaten
-├── docs/                 ← BPMN, Wirtschaftlichkeitsanalyse
+├── data/              ← Synthetische Testdaten
+├── docs/              ← BPMN, Wirtschaftlichkeitsanalyse
 ├── docker-compose.yml
-└── .env.example
+├── .env.example
+└── PROJECT_STATUS.md
 ```
 
 ---
@@ -121,11 +180,11 @@ smart-order-processing/
 
 | Phase | Zeitraum | Status |
 |---|---|---|
-| 🔧 Einrichtung & Grundstruktur | Woche 1–2 | ✅ Abgeschlossen |
+| 🔧 Repo & Grundstruktur | Woche 1–2 | ✅ Abgeschlossen |
 | 🏗️ Backend & Frontend MVP | Woche 3–4 | ✅ Abgeschlossen |
 | 🤖 KI-Pipeline verfeinern | Woche 5–6 | ⏳ Laufend |
-| 📊 BPMN & Wirtschaftlichkeit | Woche 7–8 | ⬜ Ausstehend |
-| 📋 Fallstudie & Portfolio | Woche 9–10 | ⬜ Ausstehend |
+| 🗄️ Datenbank & Persistenz | Woche 7–8 | ⬜ Ausstehend |
+| 📋 BPMN & Fallstudie | Woche 9–10 | ⬜ Ausstehend |
 
 ---
 
@@ -135,6 +194,9 @@ smart-order-processing/
 |---|---|---|
 | **Person A** | Wirtschaftsingenieur | Prozessoptimierung · BPMN · Wirtschaftlichkeit |
 | **Enes** | KI-Softwareentwickler | Backend · KI-Integration · Frontend · DevOps |
+
+> Nur gemeinsam freigegebene Entscheidungen gelten als verbindlicher Projektstand.  
+> Simulierte Ergebnisse werden niemals als reale Unternehmensergebnisse dargestellt.
 
 ---
 
