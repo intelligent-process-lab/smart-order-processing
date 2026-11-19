@@ -16,7 +16,8 @@
 [![Lizenz](https://img.shields.io/badge/LICENSE-NOT%20DECIDED-64748B?style=flat-square)](#-daten-sicherheit--lizenz)
 
 **Ahmet · Process Optimization & Business Analysis** 　|　 **Enes · AI & Software Engineering**
-*Intelligent Process Optimization Lab · Lern- und Referenzprojekt · Fiktives Unternehmensszenario*
+
+*Intelligent Process Optimization Lab · AI Engineering × Process Excellence*
 
 </div>
 
@@ -30,7 +31,7 @@
 <td width="50%" valign="top">
 
 ### 🏭 Das Geschäftsproblem
-Kundenbestellungen kommen in unterschiedlichen PDF-Layouts an. Manuelles Übertragen und Prüfen kostet Zeit und ist fehleranfällig. Wir untersuchen dieses Szenario anhand **synthetischer Aufträge**.
+Unternehmen erhalten Kundenbestellungen in unterschiedlichen PDF-Layouts. Die manuelle Übertragung und Prüfung bindet Kapazitäten und kann Fehler verursachen. Wir entwickeln einen Ansatz, um diesen Prozess strukturiert zu digitalisieren und zu verbessern.
 
 </td>
 <td width="50%" valign="top">
@@ -54,9 +55,9 @@ Kundenbestellungen kommen in unterschiedlichen PDF-Layouts an. Manuelles Übertr
 
 ## 🎯 Problemstellung und Zielbild
 
-**Fiktives Szenario:** Ein mittelständischer Fertigungsbetrieb empfängt Kundenbestellungen als digital erzeugte PDF-Dokumente mit unterschiedlichen Layouts. Mitarbeitende übertragen Angaben wie Kunde, Bestellnummer, Liefertermin und Artikelpositionen manuell in ein internes System. Fehlende oder widersprüchliche Angaben müssen geklärt werden.
+In der Fertigungsindustrie und im technischen Handel treffen Kundenbestellungen häufig als PDF-Dokumente mit unterschiedlichen Layouts ein. Angaben wie Kunde, Bestellnummer, Liefertermin und Artikelpositionen müssen erfasst, geprüft und in nachgelagerte Prozesse überführt werden. Fehlende oder widersprüchliche Informationen verursachen zusätzliche Rückfragen und Bearbeitungsschritte.
 
-Wir untersuchen, wie sich dieser Ablauf mit **regelbasierter Verarbeitung, KI-Extraktion und menschlicher Ausnahmeprüfung** verbessern lässt. Die Annahmen über den Betrieb sind Teil einer Fallstudie – keine beobachteten Ergebnisse eines realen Unternehmens.
+**Smart Order Processing** entwickelt und evaluiert einen strukturierten Ansatz zur Verarbeitung dieser Bestellungen: **regelbasierte Verfahren, KI-gestützte Extraktion und menschliche Ausnahmeprüfung** werden zu einem nachvollziehbaren Workflow verbunden. Die Entwicklung und Evaluation erfolgen zunächst mit synthetischen Testdokumenten, nicht in einem laufenden Kundenbetrieb.
 
 **Leitfrage:** Wann ist die automatisierte Auftragsverarbeitung technisch zuverlässig, welche Prüfungen bleiben notwendig und unter welchen Annahmen ist die Lösung wirtschaftlich sinnvoll?
 
@@ -309,7 +310,7 @@ Eine Funktion gilt nicht als **Done**, nur weil KI-generierter Code läuft. Der 
 - Das Projekt arbeitet in dieser Phase mit **synthetischen Daten**. Keine echten vertraulichen Auftrags- oder Personendaten verwenden.
 - Keine Zugangsschlüssel in Git oder Screenshots veröffentlichen. Vor Veröffentlichung Repository-Historie und Abhängigkeiten prüfen.
 - Das Repository bleibt **vorerst privat**. Eine Open-Source-Lizenz ist **noch nicht beschlossen**; sie wird vor einer eventuellen Veröffentlichung gemeinsam festgelegt.
-- Die wirtschaftlichen Modelle zeigen **Szenarien**, keine belegten Einsparungen bei echten Unternehmen.
+- Wirtschaftliche Berechnungen basieren zunächst auf **offengelegten Annahmen** und gemessenen technischen Ergebnissen; sie sind kein Nachweis tatsächlich erzielter Einsparungen in einem Kundenbetrieb.
 - Kundeninterviews und reale Pilotprojekte sind mögliche spätere Schritte, nicht Gegenstand dieser ersten Projektphase.
 
 ---
