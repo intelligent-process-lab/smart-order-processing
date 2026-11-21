@@ -20,6 +20,8 @@ jobs:
         run: pip install -r src/backend/requirements.txt pytest httpx
 
       - name: Run tests
+        env:
+          GOOGLE_API_KEY: test-key-for-ci
         run: pytest tests/ -v
 
   frontend-build:
