@@ -1,9 +1,12 @@
-"""KI-Agent zur Extraktion von Auftragsdaten aus Text – powered by Claude."""
+"""KI-Agent zur Extraktion von Auftragsdaten aus Text – powered by Google Gemini."""
 
 import json
-import anthropic
+import os
 
-MODEL = "claude-sonnet-4-6"
+from google import genai
+from google.genai import types
+
+MODEL = "gemini-1.5-flash"
 
 SYSTEM_PROMPT = """Du bist ein spezialisierter Daten-Extraktions-Agent für Bestellungen und Aufträge.
 
@@ -23,19 +26,33 @@ Wenn ein Feld nicht im Text vorkommt, setze null. Antworte NUR mit dem JSON."""
 
 
 def extrahiere_auftrag(text: str) -> dict:
-    client = anthropic.Anthropic()
-    antwort = client.messages.create(
+    client = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])
+    antwort = client.models.generate_content(
         model=MODEL,
-        max_tokens=1024,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": f"Extrahiere Auftragsdaten:\n\n{text}"}],
+        contents=f"Extrahiere Auftragsdaten:\n\n{text}",
+        config=types.GenerateContentConfig(
+            system_instruction=SYSTEM_PROMPT,
+            temperature=0.1,
+        ),
     )
-    rohtext = antwort.content[0].text.strip()
+    rohtext = antwort.text.strip()
     if rohtext.startswith("```"):
         rohtext = rohtext.split("```")[1]
         if rohtext.startswith("json"):
             rohtext = rohtext[4:]
     return json.loads(rohtext)
+
+
+def extrahiere_aus_pdf(inhalt: bytes) -> str:
+    """Extrahiert Text aus einem PDF-Byte-String."""
+    try:
+        import io
+        import PyPDF2
+        reader = PyPDF2.PdfReader(io.BytesIO(inhalt))
+        seiten = [seite.extract_text() or "" for seite in reader.pages]
+        return "\n".join(seiten).strip()
+    except Exception as e:
+        raise ValueError(f"PDF konnte nicht gelesen werden: {e}")
 
 
 def validiere_auftrag(daten: dict) -> dict:

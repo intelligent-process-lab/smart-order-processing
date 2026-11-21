@@ -3,7 +3,7 @@
 from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 
-from extraktor import extrahiere_auftrag, validiere_auftrag
+from extraktor import extrahiere_auftrag, extrahiere_aus_pdf, validiere_auftrag
 from models import AuftragsDaten, VerarbeitungsErgebnis, StatusResponse
 
 app = FastAPI(
@@ -54,22 +54,29 @@ def auftrag_aus_text(payload: dict):
 @app.post("/auftrag/datei", response_model=VerarbeitungsErgebnis)
 async def auftrag_aus_datei(datei: UploadFile = File(...)):
     inhalt = await datei.read()
+    dateiname = datei.filename or "unbekannt"
     try:
-        text = inhalt.decode("utf-8")
-    except UnicodeDecodeError:
-        raise HTTPException(status_code=400, detail="Nur UTF-8-kodierte Textdateien werden unterstützt.")
+        if dateiname.lower().endswith(".pdf"):
+            text = extrahiere_aus_pdf(inhalt)
+            if not text:
+                raise HTTPException(status_code=400, detail="PDF enthält keinen lesbaren Text.")
+        else:
+            try:
+                text = inhalt.decode("utf-8")
+            except UnicodeDecodeError:
+                raise HTTPException(status_code=400, detail="Nur UTF-8-Textdateien oder PDFs werden unterstützt.")
     try:
         daten = extrahiere_auftrag(text)
         validierung = validiere_auftrag(daten)
         ergebnis = VerarbeitungsErgebnis(
-            dateiname=datei.filename or "unbekannt",
+            dateiname=dateiname,
             status="erfolgreich" if validierung["gueltig"] else "warnung",
             auftrag=AuftragsDaten(**daten),
             validierung=validierung,
         )
     except Exception as e:
         ergebnis = VerarbeitungsErgebnis(
-            dateiname=datei.filename or "unbekannt",
+            dateiname=dateiname,
             status="fehler",
             fehler=str(e),
         )
