@@ -6,7 +6,7 @@ import os
 from google import genai
 from google.genai import types
 
-MODEL = "gemini-1.5-flash"
+MODEL = "models/gemini-3.5-flash"
 
 SYSTEM_PROMPT = """Du bist ein spezialisierter Daten-Extraktions-Agent für Bestellungen und Aufträge.
 
