@@ -10,6 +10,8 @@
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://reactjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://typescriptlang.org)
 [![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](https://docs.docker.com/compose)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Contributing](https://img.shields.io/badge/Contributing-Welcome-brightgreen)](CONTRIBUTING.md)
 
 </div>
 
@@ -107,7 +109,7 @@ tests/test_validierung.py::test_leere_eingabe_hat_mehrere_fehler    PASSED
 ```bash
 git clone https://github.com/intelligent-process-lab/smart-order-processing.git
 cd smart-order-processing
-cp .env.example .env          # ANTHROPIC_API_KEY eintragen
+cp .env.example .env          # GOOGLE_API_KEY eintragen
 docker compose up --build
 ```
 → Frontend: http://localhost:5173  
