@@ -55,16 +55,15 @@ def auftrag_aus_text(payload: dict):
 async def auftrag_aus_datei(datei: UploadFile = File(...)):
     inhalt = await datei.read()
     dateiname = datei.filename or "unbekannt"
-    try:
-        if dateiname.lower().endswith(".pdf"):
-            text = extrahiere_aus_pdf(inhalt)
-            if not text:
-                raise HTTPException(status_code=400, detail="PDF enthält keinen lesbaren Text.")
-        else:
-            try:
-                text = inhalt.decode("utf-8")
-            except UnicodeDecodeError:
-                raise HTTPException(status_code=400, detail="Nur UTF-8-Textdateien oder PDFs werden unterstützt.")
+    if dateiname.lower().endswith(".pdf"):
+        text = extrahiere_aus_pdf(inhalt)
+        if not text:
+            raise HTTPException(status_code=400, detail="PDF enthält keinen lesbaren Text.")
+    else:
+        try:
+            text = inhalt.decode("utf-8")
+        except UnicodeDecodeError:
+            raise HTTPException(status_code=400, detail="Nur UTF-8-Textdateien oder PDFs werden unterstützt.")
     try:
         daten = extrahiere_auftrag(text)
         validierung = validiere_auftrag(daten)
