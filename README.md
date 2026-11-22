@@ -15,6 +15,8 @@
 
 </div>
 
+![Smart Order Processing Dashboard](docs/screenshot.png)
+
 Unternehmen erhalten Bestellungen als Freitext oder PDF. **Smart Order Processing** extrahiert automatisch strukturierte Auftragsdaten daraus — Kunde, Artikel, Mengen, Preis, Datum — und leitet unklare Fälle in eine manuelle Prüfung.
 
 ## 🌐 Architektur
