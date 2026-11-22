@@ -21,7 +21,7 @@ export default function App() {
         <span className="text-2xl">🧠</span>
         <div>
           <h1 className="text-lg font-bold text-white">Smart Order Processing</h1>
-          <p className="text-xs text-gray-400">KI-gestützte Auftragsverarbeitung · Powered by Claude</p>
+          <p className="text-xs text-gray-400">KI-gestützte Auftragsverarbeitung · Powered by Gemini</p>
         </div>
         <div className="ml-auto flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
